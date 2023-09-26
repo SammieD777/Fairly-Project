@@ -1,1 +1,1 @@
-# Fairly-Project
+Fairly is a SaaS platform enabling talent acquisition teams to quickly find the best talent for their company while saving time on recruiting & hiring. Fairly is an MVP and due to the propriatetary nature of the code I can only provide snippets of my code. This repository contains SQL, .NET, and React code for Jobs feature.
