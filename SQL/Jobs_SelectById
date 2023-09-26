@@ -1,0 +1,67 @@
+USE [Fairly]
+GO
+/****** Object:  StoredProcedure [dbo].[Jobs_SelectById]    Script Date: 4/14/2023 10:19:33 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+-- Author: <Author,Samantha Davila >
+-- Create date: <04/10/2023>
+-- Description: <Fairly Jobs SelectById Proc>
+-- Code Reviewer: Vincent Lee 
+
+-- MODIFIED BY: author
+-- MODIFIED DATE:12/1/2020
+-- Code Reviewer:
+-- Note:
+
+
+CREATE PROC [dbo].[Jobs_SelectById]
+				@Id int
+
+	
+as
+
+/*
+
+DECLARE @Id int = 6
+
+Execute [dbo].[Jobs_SelectById] @Id
+
+
+
+
+*/
+
+BEGIN 
+
+SELECT j.[Id]
+      ,j.[Title]
+      ,j.[Description]
+      ,j.[Requirements]
+	  ,jt.[Name] as JobType
+	  ,js.[Name] as JobStatus 
+      ,j.[OrganizationId]
+	  ,l.[City] as Location
+      ,j.[RemoteStatusId]
+      ,j.[ContactName]
+      ,j.[ContactPhone]
+      ,j.[ContactEmail]
+      ,j.[EstimatedStartDate]
+      ,j.[EstimatedFinishDate]
+      ,j.[DateCreated]
+      ,j.[DateModified]
+      ,j.[CreatedBy]
+      ,j.[ModifiedBy]
+
+  FROM [dbo].[Jobs] as j inner join [dbo].[JobTypes] as jt
+  on j.JobtypeId = jt.Id
+  inner join [dbo].[JobStatus] as js 
+  on j.JobStatusId = js.Id
+  inner join [dbo].[Locations] as l
+  on j.LocationId = l.Id
+  Where j.Id = @Id 
+
+  End
