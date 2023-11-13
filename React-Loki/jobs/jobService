@@ -1,0 +1,18 @@
+import axios from "axios";
+import * as helper from "../services/serviceHelpers";
+
+const jobsEndpoint = `${helper.API_HOST_PREFIX}/api/jobs`;
+
+const addJob = (payload) => {
+  const config = {
+    method: "POST",
+    url: `${jobsEndpoint}`,
+    data: payload,
+    crossdomain: true,
+    headers: { "Content-Type": "application/json" },
+  };
+  return axios(config).then(helper.onGlobalSuccess).catch(helper.onGlobalError);
+};
+
+const jobService = { addJob };
+export default jobService;
